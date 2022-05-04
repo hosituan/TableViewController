@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TableViewController'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of TableViewController.'
+  s.version          = '1.0'
+  s.summary          = 'Presentable TableView - TableViewController.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -43,6 +43,4 @@ TODO: Add long description of the pod here.
   s.dependency 'SnapKit'
   s.dependency 'RxSwift',    '~> 4.0'
   s.dependency 'RxCocoa',    '~> 4.0'
-  s.dependency 'IQKeyboardManagerSwift'
-  s.dependency 'Then'
 end
