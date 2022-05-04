@@ -1,0 +1,40 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.9)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SnapKit (4.2.0)
+  - TableViewController (0.1.0):
+    - IQKeyboardManagerSwift
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+    - SnapKit
+    - Then
+  - Then (2.7.0)
+
+DEPENDENCIES:
+  - TableViewController (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+    - Then
+
+EXTERNAL SOURCES:
+  TableViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  TableViewController: f6c58ea180796f6faf97aad36e32ab3cca0db2e2
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
+
+PODFILE CHECKSUM: 3f7ed3d0132b29b59bdeee4867cd5329bcad0f51
+
+COCOAPODS: 1.11.2
