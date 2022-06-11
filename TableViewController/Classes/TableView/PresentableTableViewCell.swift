@@ -28,7 +28,7 @@ open class PresentableTableViewCell: UITableViewCell, CellConfigurable {
         
     }
 
-    func setup(viewModel: CellPresentable) { 
+    public func setup(viewModel: CellPresentable) { 
         
     }
 }
