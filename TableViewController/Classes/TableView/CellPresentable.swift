@@ -30,5 +30,5 @@ public class CellPresentableRowViewModel: CellPresentable {
     
 }
 public protocol CellConfigurable {
-    public func setup(viewModel: CellPresentable)
+    func setup(viewModel: CellPresentable)
 }

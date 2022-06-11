@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TableViewController'
-  s.version          = '1.3'
+  s.version          = '1.5'
   s.summary          = 'Presentable TableView - TableViewController.'
 
 # This description is used to generate tags and improve search results.
