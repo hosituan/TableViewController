@@ -29,11 +29,11 @@ class HomeViewModel: TableViewModel {
         
         //MARK: Cell with data, section 1
         //Text row viewModel with fully params
-        let firstTextRowModel = ExampleTextRowViewModel(text: "This is first text row", cellHeight: 120, index: nextIndex(in: 1))
+        let firstTextRowModel = ExampleTextRowViewModel(text: "This is first text row with height = 120", cellHeight: 120, index: nextIndex(in: 1))
         self.buildingModels.append(firstTextRowModel)
         
         //Text row viewModel
-        let secondTextRowModel = ExampleTextRowViewModel(text: "This is second text row", index: nextIndex(in: 1))
+        let secondTextRowModel = ExampleTextRowViewModel(text: "Second text row auto height", index: nextIndex(in: 1))
         self.buildingModels.append(secondTextRowModel)
         
         //MARK: Object data, section 2
@@ -41,10 +41,8 @@ class HomeViewModel: TableViewModel {
         let userInfoRowViewModel = ExampleRowViewModel(data: User(name: "User 001", avatarURL: nil, bio: "Hello, I'm TableViewController. Enjoy this library."), cellHeight: UITableView.automaticDimension, index: nextIndex(in: 2))
         self.buildingModels.append(userInfoRowViewModel)
         
-        
         //Important line, accept new data for viewModels
         self.viewModels.accept(buildingModels)
     }
-    
     
 }
