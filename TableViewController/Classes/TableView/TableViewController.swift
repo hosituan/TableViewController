@@ -16,8 +16,8 @@ public protocol TableViewSetupable: AnyObject {
 }
 open class TableViewController: UIViewController, TableViewSetupable {
     public var viewModel: TableViewModel?
-    private let disposeBag = DisposeBag()
-    public let tableView = UITableView()
+    private var disposeBag = DisposeBag()
+    public var tableView = UITableView()
     
     
     open override func viewDidLoad() {

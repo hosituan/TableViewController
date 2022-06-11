@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TableViewController'
-  s.version          = '1.0'
+  s.version          = '1.1'
   s.summary          = 'Presentable TableView - TableViewController.'
 
 # This description is used to generate tags and improve search results.
@@ -41,6 +41,6 @@ TODO: Add long description of the pod here.
   # s.dependency 'AFNetworking', '~> 2.3'
   s.framework = 'UIKit'
   s.dependency 'SnapKit'
-  s.dependency 'RxSwift',    '~> 4.0'
-  s.dependency 'RxCocoa',    '~> 4.0'
+  s.dependency 'RxSwift'
+  s.dependency 'RxCocoa'
 end
