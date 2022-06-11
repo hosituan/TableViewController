@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-open class PresentableTableViewCell: UITableViewCell {
+open class PresentableTableViewCell: UITableViewCell, CellConfigurable {
     
     open override class func awakeFromNib() {
         self.awakeFromNib()
@@ -25,6 +25,10 @@ open class PresentableTableViewCell: UITableViewCell {
 
     
     open func setupView() {
+        
+    }
+
+    func setup(viewModel: CellPresentable) { 
         
     }
 }
