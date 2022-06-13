@@ -12,6 +12,8 @@ import RxCocoa
 open class TableViewModel: NSObject {
     lazy open var buildingModels = [CellPresentable]()
     public let viewModels = BehaviorRelay<[CellPresentable]>(value: [])
+    open var page: Int = 1
+    open var isLoadMore = false
     
     open func buildViewModels() {
         self.buildingModels = []

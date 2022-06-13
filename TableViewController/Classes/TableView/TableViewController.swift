@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 import RxSwift
+import ESPullToRefresh
 
 public protocol TableViewSetupable: AnyObject {
     func registerCell()
@@ -33,6 +34,7 @@ open class TableViewController: UIViewController, TableViewSetupable {
         view.addSubview(tableView)
         guard let viewModel = self.tableViewModel() else { return }
         self.viewModel = viewModel
+        self.setupPullToRefresh()
         self.observeData()
         
         tableView.snp.makeConstraints { make in
@@ -47,12 +49,24 @@ open class TableViewController: UIViewController, TableViewSetupable {
         self.viewModel?.viewModels
             .subscribe(onNext: { [weak self] _ in
                 self?.tableView.reloadData()
+                // Stop pull to refresh if needed
+                self?.tableView.es.stopPullToRefresh()
+                
+                // Stop and disable loading more if needed
+                self?.tableView.es.stopLoadingMore()
+                if self?.viewModel?.isLoadMore == false {
+                    self?.tableView.es.noticeNoMoreData()
+                }
             })
             .disposed(by: disposeBag)
     }
     
     open func tableViewModel() -> TableViewModel? {
         return nil
+    }
+
+    open func setupPullToRefresh() {
+
     }
     
 }
