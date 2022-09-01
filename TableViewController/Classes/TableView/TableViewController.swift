@@ -18,6 +18,7 @@ public protocol TableViewSetupable: AnyObject {
 open class TableViewController: UIViewController, TableViewSetupable {
     public var viewModel: TableViewModel?
     private var disposeBag = DisposeBag()
+    public var refreshControl = UIRefreshControl()
     public var tableView = UITableView()
     
     
@@ -34,15 +35,14 @@ open class TableViewController: UIViewController, TableViewSetupable {
         view.addSubview(tableView)
         guard let viewModel = self.tableViewModel() else { return }
         self.viewModel = viewModel
-        self.setupPullToRefresh()
         self.observeData()
-        
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         registerCell()
         tableView.delegate = self
         tableView.dataSource = self
+        self.setupPullToRefresh()
     }
     
     private func observeData() {
@@ -50,6 +50,7 @@ open class TableViewController: UIViewController, TableViewSetupable {
             .subscribe(onNext: { [weak self] _ in
                 self?.tableView.reloadData()
                 // Stop pull to refresh if needed
+                self?.refreshControl.endRefreshing()
                 self?.tableView.es.stopPullToRefresh()
                 
                 // Stop and disable loading more if needed
@@ -69,27 +70,32 @@ open class TableViewController: UIViewController, TableViewSetupable {
 
     }
     
+    open func customizeCell(cell: UITableViewCell, index: IndexPath) {
+        
+    }
+    
 }
 
 extension TableViewController: UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.viewModel?.heightForRow(at: indexPath) ?? UITableView.automaticDimension
     }
 }
 
 extension TableViewController: UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.numberOfRow(in: section) ?? 0
     }
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return self.viewModel?.numberOfSection() ?? 0
     }
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let model = self.viewModel?.modelForRow(at: indexPath) else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: model.cellIdentifier, for: indexPath)
         if let cell = cell as? CellConfigurable {
             cell.setup(viewModel: model)
         }
+        customizeCell(cell: cell, index: indexPath)
         return cell
     }
 }
